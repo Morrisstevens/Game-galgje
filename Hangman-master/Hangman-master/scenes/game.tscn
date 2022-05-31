@@ -1,0 +1,158 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/game.gd" type="Script" id=1]
+[ext_resource path="res://scenes/word.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/click.wav" type="AudioStream" id=3]
+[ext_resource path="res://scenes/menu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/person.tscn" type="PackedScene" id=5]
+
+[node name="interactive" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Pause", "Visibility" ]
+
+[node name="word" type="Node2D" parent="." index="0"]
+
+script = ExtResource( 2 )
+input = "godot is"
+
+[node name="start" type="Position2D" parent="word" index="0"]
+
+position = Vector2( 104.633, 112.391 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="click" type="AudioStreamPlayer" parent="word" index="1"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="alphabet" parent="." index="1" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+margin_left = 314.0
+margin_top = 245.0
+margin_right = 726.0
+margin_bottom = 321.0
+
+[node name="VBoxContainer" parent="alphabet" index="0"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer2" parent="alphabet" index="1"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer3" parent="alphabet" index="2"]
+
+margin_bottom = 76.0
+
+[node name="Button" parent="alphabet/VBoxContainer3" index="0"]
+
+editor/display_folded = true
+
+[node name="VBoxContainer4" parent="alphabet" index="3"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer5" parent="alphabet" index="4"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer6" parent="alphabet" index="5"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer7" parent="alphabet" index="6"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer8" parent="alphabet" index="7"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer9" parent="alphabet" index="8"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer10" parent="alphabet" index="9"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer11" parent="alphabet" index="10"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer12" parent="alphabet" index="11"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer13" parent="alphabet" index="12"]
+
+margin_bottom = 76.0
+
+[node name="hangman" parent="." index="2" instance=ExtResource( 5 )]
+
+[connection signal="reset" from="." to="word" method="_on_game_reset"]
+
+[connection signal="goodjob" from="word" to="." method="_on_word_goodjob"]
+
+[connection signal="notthere" from="word" to="." method="_on_word_notthere"]
+
+[connection signal="pressed" from="alphabet/VBoxContainer/Button" to="word" method="handle_string" binds= [ "a" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer/Button2" to="word" method="handle_string" binds= [ "n" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer2/Button" to="word" method="handle_string" binds= [ "b" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer2/Button2" to="word" method="handle_string" binds= [ "o" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer3/Button" to="word" method="handle_string" binds= [ "c" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer3/Button2" to="word" method="handle_string" binds= [ "p" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer4/Button" to="word" method="handle_string" binds= [ "d" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer4/Button2" to="word" method="handle_string" binds= [ "q" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer5/Button" to="word" method="handle_string" binds= [ "e" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer5/Button2" to="word" method="handle_string" binds= [ "r" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer6/Button" to="word" method="handle_string" binds= [ "f" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer6/Button2" to="word" method="handle_string" binds= [ "s" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer7/Button" to="word" method="handle_string" binds= [ "g" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer7/Button2" to="word" method="handle_string" binds= [ "t" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer8/Button" to="word" method="handle_string" binds= [ "h" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer8/Button2" to="word" method="handle_string" binds= [ "u" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer9/Button" to="word" method="handle_string" binds= [ "i" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer9/Button2" to="word" method="handle_string" binds= [ "v" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer10/Button" to="word" method="handle_string" binds= [ "j" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer10/Button2" to="word" method="handle_string" binds= [ "w" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer11/Button" to="word" method="handle_string" binds= [ "k" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer11/Button2" to="word" method="handle_string" binds= [ "x" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer12/Button" to="word" method="handle_string" binds= [ "l" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer12/Button2" to="word" method="handle_string" binds= [ "y" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer13/Button" to="word" method="handle_string" binds= [ "m" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer13/Button2" to="word" method="handle_string" binds= [ "z" ]]
+
+
+[editable path="alphabet"]
